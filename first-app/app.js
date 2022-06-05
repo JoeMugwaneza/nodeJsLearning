@@ -15,9 +15,20 @@
 // Free Memory: ${freeMemory}
 // `);
 
-const fs = require('fs');
+// const fs = require('fs');
 
-fs.readdir("$",function(error, files){
-    if(error) console.log('Error', error)
-    else console.log('result', files)
+// fs.readdir("$",function(error, files){
+//     if(error) console.log('Error', error)
+//     else console.log('result', files)
+// })
+
+const EventEmitter = require("events");
+
+const emitter = new EventEmitter();
+// register a listener
+emitter.on("MessageLogged",function(){
+    console.log('Message Listened');
 })
+
+// Raise an event
+emitter.emit('MessageLogged')
